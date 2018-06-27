@@ -9,7 +9,7 @@ def clear_screen():
 # **** End of function clear_screen() **** #
 
 
-def assign_banner_attributes(debug, *args):
+def assign_banner_attributes(*args):
 
     # assign string(s) passed in as args to string_list
     string_list = []
@@ -17,11 +17,11 @@ def assign_banner_attributes(debug, *args):
     for arg in args:
         string_list.append(arg)
 
-    # 1. create banner_obect and pass in debug, cards, string_list
+    # 1. create banner_obect and pass in cards, string_list
     # 2. create first and last row in banner_object
     # 3. create blank space row in banner_object
     # 4. create string list row in banner_object
-    banner_object = Banner(debug, string_list)
+    banner_object = Banner(string_list)
     banner_object.create_first_and_last_row()
     banner_object.create_blank_space_row()
     banner_object.create_string_list()
@@ -32,7 +32,7 @@ def assign_banner_attributes(debug, *args):
     # **** End of function assign_banner_attributes() **** #
 
 
-def display_banner(debug, banner):
+def display_banner(banner):
 
     ####################################################
     #
@@ -63,9 +63,7 @@ class Banner():
     class Banner() is a template used for creating different banners to display during the blackjack game.
     '''
 
-    def __init__(self, debug, string_list):
-
-        self.debug = debug
+    def __init__(self, string_list):
 
         self.row_length         = 100              # length of all banner rows
         self.first_and_last_row = ''              # 1st and last row of banner

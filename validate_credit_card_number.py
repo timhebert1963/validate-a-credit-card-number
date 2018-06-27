@@ -46,34 +46,33 @@ from Tim_common import *
 # Visa ......................   4485636321431121   4556447302849370   4716541217957882296
 # Visa Electron .............   4913713744594363   4844135973420603   4508734969425126
 
-def main(debug):
+def main():
 
     validate_ccn = True
 
     while validate_ccn:
 
-        if not debug:
-            clear_screen()
+        clear_screen()
 
         print(" Welcome to Credit Card Number Validator")
         print('\n')
 
         # display the credit card issuer
-        display_ccn_issuers(debug)
+        display_ccn_issuers()
 
         ################################################################
         #
         #  1. SELECT A CCN ISSUER
         #
         ################################################################
-        ccn_issuer = select_ccn_issuer(debug)
+        ccn_issuer = select_ccn_issuer()
 
         ################################################################
         #
         #  2. CREATE A CCN ISSUER OBJECT
         #
         ################################################################
-        ccn_issuer_object = create_ccn_issuer_object(debug, ccn_issuer)
+        ccn_issuer_object = create_ccn_issuer_object(ccn_issuer)
 
         ################################################################
         #
@@ -86,7 +85,7 @@ def main(debug):
         # use_test_ccn will be assigned True or False
         # if True - user decided to use a test_ccn and ccn will be assigned a valid test_ccn
         # if False - user decided not to use a test_ccn and ccn will be assigned '' <empty string>
-        use_test_ccn, ccn = will_test_ccn_be_used(debug, ccn_issuer, ccn_issuer_object)
+        use_test_ccn, ccn = will_test_ccn_be_used(ccn_issuer, ccn_issuer_object)
 
         ################################################################
         #
@@ -100,7 +99,7 @@ def main(debug):
         if not use_test_ccn:
 
             # call user_provided_ccn()
-            ccn = user_provided_ccn(debug, ccn_issuer, ccn_issuer_object)
+            ccn = user_provided_ccn(ccn_issuer, ccn_issuer_object)
 
 
         ################################################################
@@ -109,7 +108,7 @@ def main(debug):
         #    
         ################################################################
 
-        is_starts_with_and_length_valid = validate_ccn_starts_with_and_length(debug, ccn, ccn_issuer, ccn_issuer_object)
+        is_starts_with_and_length_valid = validate_ccn_starts_with_and_length(ccn, ccn_issuer, ccn_issuer_object)
 
         if is_starts_with_and_length_valid:
             ccn_issuer_object.ccn_minus_last_digit = ccn[:-1]
@@ -117,14 +116,13 @@ def main(debug):
 
             ccn_issuer_object.calculate_checksum()
 
-            if not debug:
-                clear_screen()
+            clear_screen()
 
             # format CCN for display purposes
-            display_ccn = format_ccn_for_display(debug, ccn)
+            display_ccn = format_ccn_for_display(ccn)
 
             # call ccn_valid_banner() to announce if CCN is valid or not
-            ccn_valid_banner(debug, ccn_issuer, display_ccn, ccn_issuer_object.ccn_valid)
+            ccn_valid_banner(ccn_issuer, display_ccn, ccn_issuer_object.ccn_valid)
             
             print('\n')
             input(" Press Enter to continue")
@@ -144,12 +142,10 @@ def main(debug):
         # validate_another_ccn_number() will return True or False
         # the while loop will continue  if True
         # the while loop will terminate if False     
-        validate_ccn = validate_another_ccn_number(debug)
+        validate_ccn = validate_another_ccn_number()
 
     print(" Thank you for using Credit Card Number Validator!")
 
 # **** End of function main() **** #
 
-debug = False
-
-main(debug)
+main()

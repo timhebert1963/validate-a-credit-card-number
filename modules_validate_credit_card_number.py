@@ -54,35 +54,29 @@ class CreditCard():
     # 5. The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
 
     # credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug = debug
         self.ccn   = ''        # ccn is Credit Card Number
-
         self.ccn_minus_last_digit         = ''
         self.last_digit                   = ''
-
         self.ccn_valid = False
 
-    # **** End of CreditCard() method __init__() **** #
+    # **** End of CreditCard.__init__() **** #
 
 
     def set_ccn(self, ccn):   # ccn credit card number
-
         self.ccn = ccn
 
     # **** End of CreditCard.set_ccn() **** #
 
 
     def minus_last_digit(self):   # ccn credit card number
-
         self.ccn_minus_last_digit = self.ccn[:-1]
 
     # **** End of CreditCard.minus_last_digit() **** #
 
 
     def last_digit(self):
-
     	self.last_digit = self.ccn[-1:]
 
     # **** End of CreditCard.last_digit() **** #
@@ -90,13 +84,12 @@ class CreditCard():
 
     def calculate_checksum(self):
 
-        '''
-        1. Reverse the numbers
-        2. Multiply the digits in odd positions (1, 3, 5, etc.) by 2
-        3. subtract 9 to all any result higher than 9
-        4. Add all the numbers together
-        5. The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
-        '''
+        #
+        # 1. Reverse the numbers
+        # 2. Multiply the digits in odd positions (1, 3, 5, etc.) by 2
+        # 3. subtract 9 to all any result higher than 9
+        # 4. Add all the numbers together
+        # 5. The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
 
         # 1. reverse the numbers
         reverse = self.ccn_minus_last_digit[::-1]
@@ -134,180 +127,187 @@ class CreditCard():
 
 
     def shuffle_vaid_test_nums(self, valid_test_nums):
-
         for i in range (10):
             random.shuffle(self.valid_test_nums)
 
-    # **** End of CreditCard() method shuffle_vaid_test_nums() **** #
+    # **** End of CreditCard.shuffle_vaid_test_nums() **** #
 
 
     def shuffle_invalid_test_nums(self, valid_test_nums):
-
         for i in range (10):
             random.shuffle(self.invalid_test_nums)
 
-    # **** End of CreditCard() method shuffle_invalid_test_nums() **** #
+    # **** End of CreditCard.shuffle_invalid_test_nums() **** #
+
+# **** End of class CreditCard() **** #
 
 
 class AmericanExpress(CreditCard):
 
     # American Express credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['34', '37']
         self.range       = []
         self.length      = ['15']
         self.valid_test_nums     = ['346670120314698', '344250847513385', '346820169192865']
         self.invalid_test_nums   = ['346670120314699', '344250847513386', '346820169192866']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of AmericanExpress() method __init__() **** #
+    # **** End of AmericanExpress.__init__() **** #
+
+# **** End of class AmericanExpress() **** #
 
 
 class DinersClub_CB(CreditCard):    # Diners Club - Carte Blanche
 
     # Diners Club - Carte Blanche credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['300', '301', '302', '303', '304', '305']
         self.range       = []
         self.length      = ['14']
         self.valid_test_nums     = ['30597994646759', '30396586831709', '30287405677086']
         self.invalid_test_nums   = ['30597994646758', '30396586831708', '30287405677087']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of DinersClub_CB() method __init__() **** #
+    # **** End of DinersClub_CB.__init__() **** #
+
+# **** End of class DinersClub_CB() **** #
 
 
 class DinersClub_Int(CreditCard):    # Diners Club - International
 
     # Diners Club - International credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['36']
         self.range       = []
         self.length      = ['14']
         self.valid_test_nums     = ['36787559490388', '36852058606197', '36302552850008']
         self.invalid_test_nums   = ['36787559490389', '36852058606198', '36302552850009']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of DinersClub_Int() method __init__() **** #
+    # **** End of DinersClub_Int.__init__() **** #
+
+# **** End of class DinersClub_Int() **** #
 
 
 class DinersClub_NA(CreditCard):    # Diners Club - USA and Canada (North America)
 
     # Diners Club - USA and Canada (North America) credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['54']
         self.range       = []
         self.length      = ['16']
         self.valid_test_nums     = ['5593851839825849', '5486165300355016', '5556271903957771']
         self.invalid_test_nums   = ['5593851839825848', '5486165300355017', '5556271903957772']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of DinersClub_NA() method __init__() **** #
+    # **** End of DinersClub_NA.__init__() **** #
+
+# **** End of class DinersClub_NA() **** #
 
 
 class Discover(CreditCard):
 
     # Discover credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['6011', '644', '645', '646', '647', '648', '649', '65']
         self.range       = ['622126', '622925']
         self.length      = ['16', '19']
         self.valid_test_nums     = ['6011890688900222', '6011028044966849', '6011644174791364389']
         self.invalid_test_nums   = ['6011890688900223', '6011028044966848', '6011644174791364388']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of Discover() method __init__() **** #
+    # **** End of Discover.__init__() **** #
+
+# **** End of class Discover() **** #
 
 
 class InstaPayment(CreditCard):
 
     # InstaPayment credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['637', '638', '639']
         self.range       = []
         self.length      = ['16']
         self.valid_test_nums     = ['6395513970325942', '6371166876186153', '6386402144476826']
         self.invalid_test_nums   = ['6395513970325943', '6371166876186154', '6386402144476827']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of InstaPayment() method __init__() **** #
+    # **** End of InstaPayment.__init__() **** #
+
+# **** End of class InstaPayment() **** #
 
 
 class JCB(CreditCard):
 
     # JCB credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = []
         self.range       = ['3528', '3589']
         self.length      = ['16', '19']
         self.valid_test_nums     = ['3540377950273782', '3532065321740205', '3540614149080877918']
         self.invalid_test_nums   = ['3540377950273783', '3532065321740206', '3540614149080877919']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of JCB() method __init__() **** #
+    # **** End of JCB.__init__() **** #
+
+# **** End of class JCB() **** #
 
 
 class Maestro(CreditCard):
 
     # Maestro credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['5018', '5020', '5038', '5893', '6304', '6759', '6761', '6762', '6763']
         self.range       = []
         self.length      = ['16', '19']
         self.valid_test_nums     = ['6761190805824872', '6304159001213101', '5038487976042725']
         self.invalid_test_nums   = ['6761190805824873', '6304159001213102', '5038487976042726']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of Maestro() method __init__() **** #
+    # **** End of Maestro.__init__() **** #
+
+# **** End of class Maestro() **** #
 
 
 class MasterCard(CreditCard):
 
     # MasterCard credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['51', '52', '53', '54', '55']
         self.range       = ['222100', '272099']
         self.length      = ['16']
         self.valid_test_nums     = ['5543469062264627', '5389688415680745', '2720997617128477']
         self.invalid_test_nums   = ['5543469062264628', '5389688415680746', '2720997617128478']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of MasterCard() method __init__() **** #
+    # **** End of MasterCard.__init__() **** #
+
+# **** End of class MasterCard() **** #
 
 
 class Visa(CreditCard):
 
     # Visa credit card class
-    def __init__(self, debug):
-
-        self.debug       = debug
+    def __init__(self):
 
         self.starts_with = ['4']
         self.range       = []
@@ -315,23 +315,26 @@ class Visa(CreditCard):
         self.valid_test_nums     = ['4485636321431121', '4556447302849370', '4716541217957882296']
         self.invalid_test_nums   = ['4485636321431122', '4556447302849371', '4716541217957882297']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of Visa() method __init__() **** #
+    # **** End of Visa.__init__() **** #
+
+# **** End of class Visa() **** #
 
 
 class VisaElectron(CreditCard):
 
     # VisaElectron credit card class
-    def __init__(self, debug):
+    def __init__(self):
 
-        self.debug       = debug
         self.starts_with = ['4026', '417500', '4508', '4844', '4913', '4917']
         self.range       = []
         self.length      = ['16']
         self.valid_test_nums     = ['4913713744594363', '4844135973420603', '4508734969425126']
         self.invalid_test_nums   = ['4913713744594364', '4844135973420604', '4508734969425127']
 
-        CreditCard.__init__(self, self.debug)
+        CreditCard.__init__(self)
 
-    # **** End of VisaElectron() method __init__() **** #
+    # **** End of VisaElectron.__init__() **** #
+
+# **** End of class VisaElectron() **** #

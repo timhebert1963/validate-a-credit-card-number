@@ -5,7 +5,7 @@ import random
 
 
 
-def display_ccn_issuers(debug):
+def display_ccn_issuers():
     
     print(" Credit Card Issuers:")
     print(" ____________________________________________________________________________________")
@@ -21,7 +21,7 @@ def display_ccn_issuers(debug):
 # **** End of function display_ccn_issuers() **** #
 
 
-def select_ccn_issuer(debug):
+def select_ccn_issuer():
 
     valid_input = False
 
@@ -78,68 +78,67 @@ def select_ccn_issuer(debug):
 
             else:
 
-                if not debug:
-                    clear_screen()
+                clear_screen()
 
                 print(" You did not provide a valid Credit Card Issuer. Please try again.")
                 print('\n')
-                display_ccn_issuers(debug)
+                display_ccn_issuers()
 
     return issuer
 
 # **** End of function select_ccn_issuer() **** #
 
 
-def create_ccn_issuer_object(debug, ccn_issuer):
+def create_ccn_issuer_object(ccn_issuer):
 
     if ccn_issuer == 'Visa':
-        ccn_issuer_object = Visa(debug)
+        ccn_issuer_object = Visa()
         return ccn_issuer_object
 
     elif ccn_issuer == 'MasterCard':
-        ccn_issuer_object = MasterCard(debug)
+        ccn_issuer_object = MasterCard()
         return ccn_issuer_object
 
     elif ccn_issuer == 'American Express':
-        ccn_issuer_object = AmericanExpress(debug)
+        ccn_issuer_object = AmericanExpress()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Discover':
-        ccn_issuer_object = Discover(debug)
+        ccn_issuer_object = Discover()
         return ccn_issuer_object
 
     elif ccn_issuer == 'JCB':
-        ccn_issuer_object = JCB(debug)
+        ccn_issuer_object = JCB()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Diners Club - North America':
-        ccn_issuer_object = DinersClub_NA(debug)
+        ccn_issuer_object = DinersClub_NA()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Diners Club - Carte Blanche':
-        ccn_issuer_object = DinersClub_CB(debug)
+        ccn_issuer_object = DinersClub_CB()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Diners Club - International':
-        ccn_issuer_object = DinersClub_Int(debug)
+        ccn_issuer_object = DinersClub_Int()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Maestro':
-        ccn_issuer_object = Maestro(debug)
+        ccn_issuer_object = Maestro()
         return ccn_issuer_object
 
     elif ccn_issuer == 'Visa Electron':
-        ccn_issuer_object = VisaElectron(debug)
+        ccn_issuer_object = VisaElectron()
         return ccn_issuer_object
 
     elif ccn_issuer == 'InstaPayment':
-        ccn_issuer_object = InstaPayment(debug)
+        ccn_issuer_object = InstaPayment()
         return ccn_issuer_object
 
 # **** End of function create_ccn_issuer_object() **** #
 
 
-def will_test_ccn_be_used(debug, ccn_issuer, ccn_issuer_object):
+def will_test_ccn_be_used(ccn_issuer, ccn_issuer_object):
 
     # user decides if ccn issuer test ccn to be used
     valid_input = False
@@ -205,7 +204,7 @@ def will_test_ccn_be_used(debug, ccn_issuer, ccn_issuer_object):
 # **** End of function will_test_ccn_be_used() **** #
 
 
-def user_provided_ccn(debug, ccn_issuer, ccn_issuer_object):
+def user_provided_ccn(ccn_issuer, ccn_issuer_object):
 
     print('\n')
     ccn = input(" Enter the credit card number to validate. Do not use spaces!   ")
@@ -214,7 +213,7 @@ def user_provided_ccn(debug, ccn_issuer, ccn_issuer_object):
 # **** End of function user_provided_ccn() **** #
 
 
-def validate_ccn_starts_with_and_length(debug, ccn, ccn_issuer, ccn_issuer_object):
+def validate_ccn_starts_with_and_length(ccn, ccn_issuer, ccn_issuer_object):
 
     is_ccn_format_valid = False
     is_ccn_length_valid = False
@@ -255,7 +254,7 @@ def validate_ccn_starts_with_and_length(debug, ccn, ccn_issuer, ccn_issuer_objec
 # **** End of function validate_ccn_starts_with_and_length() **** #
 
 
-def format_ccn_for_display(debug, ccn):
+def format_ccn_for_display(ccn):
 
     new_ccn = ''
 
@@ -277,7 +276,7 @@ def format_ccn_for_display(debug, ccn):
 # **** End of function format_ccn_for_display() **** #
 
 
-def ccn_valid_banner(debug, issuer, ccn, is_valid):
+def ccn_valid_banner(issuer, ccn, is_valid):
 
     if is_valid:
         # strings to display in display banner
@@ -287,16 +286,16 @@ def ccn_valid_banner(debug, issuer, ccn, is_valid):
         first_string  = ("The {} Credit Card Number {} is ** NOT VALID ** !!".format(issuer, ccn))
 
     # assign values to Banner object attributes
-    banner_object = assign_banner_attributes(debug, first_string)
+    banner_object = assign_banner_attributes(first_string)
 
     # call display_banner
-    display_banner(debug, banner_object)
+    display_banner(banner_object)
     del banner_object
 
 # **** End of function get_radians() **** #
 
 
-def validate_another_ccn_number(debug):
+def validate_another_ccn_number():
 
     # Find out if user wants to validate another Credit Card Number
     yes_or_no = False
