@@ -1,6 +1,9 @@
 import random
 
 # How to validate a Credit Card Number?
+#
+# Reference: https://www.freeformatter.com/credit-card-number-generator-validator.html
+#
 # Most credit card number can be validated using the Luhn algorithm, which is more or a less a glorified Modulo 10 formula!
 #
 # The Luhn Formula:
